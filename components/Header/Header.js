@@ -22,6 +22,7 @@ const Header = (props)=>{
             </Pressable>
           </View>
         </View>
+    
       </>
     );
 }
@@ -30,7 +31,7 @@ const Header = (props)=>{
 
 const styles = StyleSheet.create({
     container:{
-        height:30,
+        height:40,
         width:"100%",
         backgroundColor:'#221bf2',
         flexDirection:'row'

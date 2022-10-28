@@ -22,12 +22,14 @@ import {
   Colors
 } from 'react-native/Libraries/NewAppScreen';
 import Main from './components/Main';
+import { Provider } from 'react-redux';
+import store from './store/store';
 const App =  () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
     flex:1,
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    backgroundColor:"#221bf2"// isDarkMode ? Colors.darker : Colors.lighter,
   };
 
   return (
@@ -36,7 +38,9 @@ const App =  () => {
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
         backgroundColor={backgroundStyle.backgroundColor}
       />
-      <Main></Main>
+      <Provider store={store}>
+        <Main></Main>
+      </Provider>
     </SafeAreaView>
   );
 };
