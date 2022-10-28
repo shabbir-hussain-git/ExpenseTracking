@@ -21,6 +21,7 @@ const RecentExpense = ()=>{
          }}>
           <Stack.Screen name="Recent" component={RecentComponent} />
           <Stack.Screen name="Add Expense" component={AddExpense} />
+          <Stack.Screen name="Edit Expense" component={AddExpense} />
         </Stack.Navigator>
       </>
     );

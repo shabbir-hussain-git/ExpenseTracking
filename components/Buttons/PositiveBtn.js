@@ -1,11 +1,12 @@
 import {Text, View,StyleSheet, Pressable} from "react-native"
 
-const PositiveBtn = ({title,onPress,bgColor='rgb(210, 230, 255)',pColor="white"})=>{
+const PositiveBtn = ({title,onPress=()=>{},bgColor='rgb(210, 230, 255)',pColor="white"})=>{
 
     return (
         <>
             <View style={styles.positiveContainer}>
                 <Pressable 
+                onPress={onPress}
                 android_ripple={"#A32cc4"}
                 style={({ pressed }) => [
                     {

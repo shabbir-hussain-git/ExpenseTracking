@@ -2,12 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     totalExpense:0,
-    expenseArr:[{
-        id:'1',
-        title:'A Book',
-        date:new Date(),
-        expense:14.99
-    }],
+    expenseArr:[],
     totalExpense:0
 }
 const getTotalExpense = (arr)=>{
@@ -15,13 +10,15 @@ const getTotalExpense = (arr)=>{
     arr.forEach(ele => {
         data += ele.expense;
     });
+    return parseFloat(data.toFixed(2));
 }
 const expenseSlice = createSlice({
     name:'expenseSlice',
     initialState,
     reducers:{
         addExpense:(state,action)=>{
-            state.expenseArr = [...state.expenseArr,action.payload.expense]
+            console.log(typeof JSON.parse(action.payload))
+            state.expenseArr = [...state.expenseArr,JSON.parse(action.payload)]
             state.totalExpense = getTotalExpense(state.expenseArr);
         }
     }
