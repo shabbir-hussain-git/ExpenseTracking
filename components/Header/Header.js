@@ -4,7 +4,6 @@ import { useNavigation } from "@react-navigation/native";
 
 
 const Header = (props)=>{
-    console.log(props)
     const navigation = useNavigation();
 
     const addPressed = ()=>{

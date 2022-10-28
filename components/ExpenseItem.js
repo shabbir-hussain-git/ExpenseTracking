@@ -1,6 +1,6 @@
-import { Text, StyleSheet,View } from "react-native"
+import { Text, StyleSheet,View, Pressable } from "react-native"
 import getDateString from "../store/Util";
-
+import { useNavigation } from "@react-navigation/native";
 const ExpenseItem = (props)=>{
     /*
     {
@@ -10,24 +10,31 @@ const ExpenseItem = (props)=>{
         expense:14.99
     }
     */
+   const navigation = useNavigation();
     let eItem = props.item;
     if(!eItem){
         eItem = {}
     }
-    
+    const onItemPressed = ()=>{
+        navigation.navigate('Edit Expense',{
+            index:props.index
+        })
+    }
     return (
-        <>
-            <View style={styles.container}>
-                <View style={styles.descView}>
-                    <Text style={styles.titleStyle}>{eItem.title}</Text>
-                    <Text style={styles.dateStyle}>{eItem.date}</Text>
-                </View>
-                <View style={styles.expenseView}>
-                    <Text>{eItem.expense}</Text>
-                </View>
+      <>
+        <View style={styles.container}>
+          <Pressable style={styles.btn} onPress={onItemPressed}>
+            <View style={styles.descView}>
+              <Text style={styles.titleStyle}>{eItem.title}</Text>
+              <Text style={styles.dateStyle}>{eItem.date}</Text>
             </View>
-        </>
-    )
+            <View style={styles.expenseView}>
+              <Text>{eItem.expense}</Text>
+            </View>
+          </Pressable>
+        </View>
+      </>
+    );
 }
 const styles = StyleSheet.create({
     container:{
@@ -38,6 +45,10 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         flexDirection:"row",
         paddingHorizontal:16
+    },
+    btn:{
+        width:'100%',
+        flexDirection:"row",
     },
     descView:{
         flex:1,

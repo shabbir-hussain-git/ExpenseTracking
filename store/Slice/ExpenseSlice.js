@@ -17,12 +17,22 @@ const expenseSlice = createSlice({
     initialState,
     reducers:{
         addExpense:(state,action)=>{
-            console.log(typeof JSON.parse(action.payload))
             state.expenseArr = [...state.expenseArr,JSON.parse(action.payload)]
             state.totalExpense = getTotalExpense(state.expenseArr);
-        }
+        },
+        updateExpense:(state,action)=>{
+            let index = action.payload.index;
+            state.expenseArr[index].expense += 1;
+            state.totalExpense = getTotalExpense(state.expenseArr);
+
+        },
+        deleteExpense:(state,action)=>{
+            let index = action.payload.index;
+            state.expenseArr.splice(index,1);
+            state.totalExpense = getTotalExpense(state.expenseArr);
+        },
     }
 });
 
 export default expenseSlice.reducer;
-export const {addExpense}  = expenseSlice.actions;
+export const {addExpense,updateExpense,deleteExpense}  = expenseSlice.actions;

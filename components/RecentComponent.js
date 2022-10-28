@@ -6,10 +6,12 @@ import ExpenseItem from "./ExpenseItem";
 const RecentComponent = (props)=>{
     const expenseData = useSelector((store)=>store.expenses);
    
-    const getItem = ({item})=>{
+    const getItem = (itemData)=>{
+        let item = itemData.item;
+        let index = itemData.index;
         return (
         <View style={styles.expContainer}>
-            <ExpenseItem item={item}></ExpenseItem>
+            <ExpenseItem index={index} item={item}></ExpenseItem>
         </View>
         )
 
