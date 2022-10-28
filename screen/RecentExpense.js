@@ -9,18 +9,19 @@ import EditExpense from "../components/EditExpense";
 const Stack = createNativeStackNavigator();
 
 
-const RecentExpense = ()=>{
+const RecentExpense = ({navigation,route})=>{
+  let name = route.name == 'All Screen' ? 'All' : 'Recent';
     return (
       <>
         <Stack.Navigator
-         initialRouteName="Recent"
+         initialRouteName={name}
          screenOptions={{
            header:({ navigation, route, options }) => {
             const title = getHeaderTitle(options, route.name);
             return <Header title={title} style={options.headerStyle} />;
           }
          }}>
-          <Stack.Screen name="Recent" component={RecentComponent} />
+          <Stack.Screen name={name} component={RecentComponent} />
           <Stack.Screen name="Add Expense" component={AddExpense} />
           <Stack.Screen name="Edit Expense" component={EditExpense} />
         </Stack.Navigator>

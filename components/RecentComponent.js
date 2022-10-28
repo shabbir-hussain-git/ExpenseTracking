@@ -3,9 +3,19 @@ import { useSelector } from "react-redux";
 import ExpenseDesc from "./ExpenseDesc";
 import ExpenseItem from "./ExpenseItem";
 
-const RecentComponent = (props)=>{
+const RecentComponent = ({navigation,route})=>{
+    console.log(route)
     const expenseData = useSelector((store)=>store.expenses);
-   
+    let arr = expenseData.expenseArr;
+    let title = `Last 7 days`;
+    let total = expenseData.lastSevenExpense;
+    let pre = "last7-";
+    if(route == 'All'){
+        arr = expenseData.allData
+        title = `All Expenses`;
+        total = expenseData.totalExpense
+        pre = "all-";
+    }
     const getItem = (itemData)=>{
         let item = itemData.item;
         let index = itemData.index;
@@ -19,11 +29,11 @@ const RecentComponent = (props)=>{
     return (
         <>
             <View style={styles.container}>
-                <ExpenseDesc title="Last 7 days" total={expenseData.totalExpense}></ExpenseDesc>
+                <ExpenseDesc title={title} total={total}></ExpenseDesc>
                 <FlatList
-                data={expenseData.expenseArr}
+                data={arr}
                 renderItem={getItem}
-                keyExtractor={(item,index)=>("exp-"+index)
+                keyExtractor={(item,index)=>(pre+index)
                 }></FlatList>
             </View>
         </>

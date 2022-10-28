@@ -37,17 +37,14 @@ const Main = ()=>{
               }}
             />
             <Tab.Screen
-              name="All"
-              component={AllExpense}
+              name="All Screen"
+              component={RecentExpense}
               options={{
                 tabBarLabel: 'All',
                 tabBarIcon: ({color, size}) => (
                   <Icon name="calendar" color={color} size={size} />
                 ),
-                header:({ navigation, route, options }) => {
-                  const title = getHeaderTitle(options, route.name);
-                  return <Header title={title} style={options.headerStyle} />;
-                }
+                headerShown:false
               }}
             />
           </Tab.Navigator>

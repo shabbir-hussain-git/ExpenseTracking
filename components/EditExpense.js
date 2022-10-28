@@ -14,7 +14,6 @@ const EditExpense = ()=>{
     const route = useRoute();
 
     const updateExpenseMethod = () => {
-      console.log(route.params);
       dispatch(updateExpense(route.params));
       cancel();
     };

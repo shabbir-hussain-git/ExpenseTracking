@@ -29,7 +29,7 @@ const ExpenseItem = (props)=>{
               <Text style={styles.dateStyle}>{eItem.date}</Text>
             </View>
             <View style={styles.expenseView}>
-              <Text>{eItem.expense}</Text>
+              <Text style={{color:"#000"}}>{eItem.expense}</Text>
             </View>
           </Pressable>
         </View>
