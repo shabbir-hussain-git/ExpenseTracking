@@ -34,7 +34,8 @@ const expenseSlice = createSlice({
         },
         updateExpense:(state,action)=>{
             let index = action.payload.index;
-            state.expenseArr[index].expense += 1;
+            let item = action.payload.data;
+            state.expenseArr[index]  = item;
             state.totalExpense = getTotalExpense(state.expenseArr);
             state.lastSevenExpense = getLastWeekExpense(state.expenseArr);
 
